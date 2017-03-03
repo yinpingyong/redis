@@ -28,7 +28,7 @@ import java.util.concurrent.Executor;
 @ComponentScan({
         "cn.com.bestpay"
 })
-@ImportResource({ "classpath:spring/springmvc-servlet.xml" } )
+@ImportResource({ "classpath:spring/springmvc-servlet.xml" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter  implements AsyncConfigurer {
 
     @Bean
@@ -40,7 +40,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter  implements AsyncCo
     public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
         super.configureAsyncSupport(configurer);
         configurer.setDefaultTimeout(7500);
-
     }
 
     @Override

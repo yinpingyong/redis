@@ -12,10 +12,8 @@ import org.springframework.context.annotation.PropertySource;
  *
  */
 @Configuration
-/*@PropertySource(name = "systemProperties" , value = {"classpath:properties/system.properties"})
-@ImportResource({ "classpath:properties/spring/root_config.xml" } )*/
+@ComponentScan({})
+@PropertySource(value = {"classpath:properties/system.properties"})
+@ImportResource({ "classpath:spring/spring-session.xml" } )
 public class SpringRootConfig {
-
-
-
 }

@@ -11,6 +11,14 @@
     <title>Redis-Test</title>
 </head>
 <body>
-    hahahha
+
+    <form action="addValue" method="get">
+
+        <input type="text" name="value" id="value">
+
+        <input type="submit" value="新增">
+
+    </form>
+
 </body>
 </html>
