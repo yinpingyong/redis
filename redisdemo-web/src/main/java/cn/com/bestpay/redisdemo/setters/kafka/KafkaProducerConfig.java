@@ -24,17 +24,29 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
+    //队列的名称
     public static final String TEST_TOPIC_ID = "test.topic1";
 
-
+    /**
+     * 从配置文件中，读取kafka.topic值，
+     * 如果没有，则取默认值：TEST_TOPIC_ID常亮对应的值
+     */
     @Value("${kafka.topic:" + TEST_TOPIC_ID + "}")
     private String topic;
 
     private String messageKey="test.key";
 
+    /**
+     * kafka地址
+     */
     @Value("${kafka.address:localhost:9092}")
     private String brokerAddress;
 
+    /**
+     * 创建MessageHandler对象，如果队列不存在，会创建队列。
+     * @return
+     * @throws Exception
+     */
     @Bean
     @ServiceActivator(inputChannel = "inputToKafka", autoStartup="true")
     public MessageHandler handler() throws Exception {
@@ -44,11 +56,19 @@ public class KafkaProducerConfig {
         return handler;
     }
 
+    /**
+     * 创建KafkaTemplate对象，用于操作kafka，依赖数据源
+     * @return
+     */
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
+    /**
+     * kafka生产者数据源配置
+     * @return
+     */
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> props = new HashMap();

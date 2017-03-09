@@ -24,10 +24,11 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-
     public static final String TEST_TOPIC_ID = "test.topic1";
 
-
+    /**
+     * 队列名称
+     */
     @Value("${kafka.topic:" + TEST_TOPIC_ID + "}")
     private String topic;
 
@@ -36,10 +37,13 @@ public class KafkaConsumerConfig {
     @Value("${kafka.address:localhost:9092}")
     private String brokerAddress;
 
-
+    /**
+     * 消费者监听器，从队列中获取数据
+     * @return
+     * @throws Exception
+     */
     @Bean
     public KafkaMessageListenerContainer<String, String> container() throws Exception {
-
         Map<String, Object> props = new HashMap();
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "testGroup");
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.brokerAddress);
