@@ -239,6 +239,13 @@
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
 
+            <!--引入Kafka Jar-->
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-kafka</artifactId>
+                <version>2.1.0.RELEASE</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
