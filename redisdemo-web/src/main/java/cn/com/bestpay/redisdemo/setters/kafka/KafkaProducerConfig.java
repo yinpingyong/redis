@@ -24,7 +24,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    public static final String TEST_TOPIC_ID = "test.topic";
+    public static final String TEST_TOPIC_ID = "test.topic1";
 
 
     @Value("${kafka.topic:" + TEST_TOPIC_ID + "}")
